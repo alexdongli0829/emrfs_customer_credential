@@ -21,3 +21,14 @@ jar包拷贝目录：
  
 /usr/share/aws/emr/emrfs/auxlib/
  
+ 
+ 
+ 测试:
+ 
+hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar wordcount -DCustomer.Name.Set=2016 s3://1st-s3/2016/test.sh result3
+ 
+OK
+ 
+hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar wordcount -DCustomer.Name.Set=2017 s3://1st-s3/year=2016/test.sh result3
+ 
+permission deny
