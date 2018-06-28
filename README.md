@@ -1,12 +1,24 @@
 # emrfs_customer_credential
 
-A账户 s3 bucket : 1st-s3, 其中有很多文件夹比如2016，2017，该bucket向B账户开放
+A Account: 
+
+s3 bucket : 1st-s3, there are many folders such as: 2016，2017，the bucket is open to B account
  
-B账户，首先有一个role：arn:aws-cn:iam::442337510176:role/demo-role，这个role有所有s3的权限，同时，hadoop运行的用户必须有assume role的权限，
+B Account，first, there is a role：arn:aws-cn:iam::442337510176:role/demo-rolo which has s3 permission. In the same time, the hadoop user should have permission to consume the role
  
-用户提交任务时，需要加入一个Customer.Name.Set的属性，这个可以使app的名字，然后设置完以后，终端用户只有访问名字对应想s3 文件夹的权限，没有访问其他文件夹权限。
- 
-配置文件：
+When using this class, the Customer.Name.Set property is needed:
+
+for example:
+
+hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar wordcount -DCustomer.Name.Set=2016 s3://1st-s3/2016/test.sh result3
+
+
+
+
+
+================================================
+
+emrfs-site.xml
  
 sudo vim /usr/share/aws/emr/emrfs/conf/emrfs-site.xml
  
@@ -17,13 +29,13 @@ sudo vim /usr/share/aws/emr/emrfs/conf/emrfs-site.xml
 </configuration>
  
  
-jar包拷贝目录：
+jar path：
  
 /usr/share/aws/emr/emrfs/auxlib/
+
+================================================
  
- 
- 
- 测试:
+Test:
  
 hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar wordcount -DCustomer.Name.Set=2016 s3://1st-s3/2016/test.sh result3
  
