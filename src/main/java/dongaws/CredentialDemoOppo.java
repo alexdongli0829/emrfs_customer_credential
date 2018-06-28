@@ -2,6 +2,7 @@ package dongaws;
 
 /**
  * credential Demo 
+ * Author: Dong
  *
  */
 import java.net.URI;
